@@ -1,0 +1,11 @@
+primary-meta-store:
+  access-control-type: READ_AND_WRITE_ON_DATABASE_WHITELIST
+  database-prefix: ''
+  name: primary
+  remote-meta-store-uris: thrift://${primary_metastore_host}:${primary_metastore_port}
+  writable-database-white-list:
+${primary_metastore_whitelist}
+federated-meta-stores:
+${local_metastores}
+${remote_metastores}
+${ssh_metatstores}

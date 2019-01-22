@@ -1,0 +1,17 @@
+---
+# Copyright (C) 2018 Expedia Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+
+# This is a sample file
+
+source-catalog:
+  name: aws-source
+  hive-metastore-uris: ${source-metastore-uri}
+replica-catalog:
+  name: aws-target
+  hive-metastore-uris: ${target-metastore-uri}
+event-receiver:
+  message-reader-factory-class: com.hotels.shunting.yard.receiver.sqs.messaging.SqsMessageReaderFactory
+  configuration-properties:
+    com.hotels.shunting.yard.event.receiver.sqs.queue: ${shunting-yard-sqs-queue}
+    com.hotels.shunting.yard.event.receiver.sqs.wait.time.seconds: 15
