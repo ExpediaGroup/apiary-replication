@@ -11,12 +11,6 @@
             "awslogs-stream-prefix": "/"
         }
     },
-    "portMappings": [
-      {
-        "containerPort": 48869,
-        "hostPort": 48869
-      }
-    ],
     "environment":[
      {
         "name": "HEAPSIZE",
