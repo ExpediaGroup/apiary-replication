@@ -19,10 +19,10 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | subnets | ECS container subnets. | list | - | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
 | vpc_id | VPC ID. | string | - | yes |
-| source_metastore_uri | Source Metastore URI to be configured in Shunting Yard | string | `localhost` | yes |
-| target_metastore_uri | Target Metastore URI to be configured in Shunting Yard | string | `localhost` | yes |
-| shunting_yard_sqs_queue | SQS Queue for Shunting Yard | string | `https://sqs.us-west-2.amazonaws.com/123455667/sample-queue` | yes |
-| metastore_events_sns_topic | SNS Topic for Hive Metastore events | string | `arn:aws:sns:us-west-2:1234567:metastore-events-sns-topic` | yes |
+| source_metastore_uri | Source Metastore URI to be configured in Shunting Yard | string | - | yes |
+| target_metastore_uri | Target Metastore URI to be configured in Shunting Yard | string | - | yes |
+| shunting_yard_sqs_queue | SQS Queue for Shunting Yard | string | - | yes |
+| metastore_events_sns_topic | SNS Topic for Hive Metastore events | string | - | yes |
 | selected_tables | List of table | list | `<list>` | yes |
 
 ## Usage

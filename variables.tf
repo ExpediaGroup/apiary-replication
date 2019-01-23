@@ -45,7 +45,7 @@ variable "tags" {
 
 variable "memory" {
   description = <<EOF
-The amount of memory (in MiB) used to allocate for the Waggle Dance container.
+The amount of memory (in MiB) used to allocate for the Shunting Yard container.
 Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
 EOF
 
@@ -55,7 +55,7 @@ EOF
 
 variable "cpu" {
   description = <<EOF
-The number of CPU units to reserve for the Waggle Dance container.
+The number of CPU units to reserve for the Shunting Yard container.
 Valid values can be 256, 512, 1024, 2048 and 4096.
 Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
 EOF
@@ -70,36 +70,36 @@ variable "ingress_cidr" {
 }
 
 variable "docker_image" {
-  description = "Full path Waggle Dance Docker image."
+  description = "Full path Shunting Yard Docker image."
   type        = "string"
 }
 
 variable "docker_version" {
-  description = "Waggle Dance Docker image version."
+  description = "Shunting Yard Docker image version."
   type        = "string"
 }
 
 variable "source_metastore_uri" {
-  description = "Source Metastore URI for Shunting Yard"
+  description = "Source Metastore URI for Shunting Yard."
   type        = "string"
 }
 
 variable "target_metastore_uri" {
-  description = "Target for Shunting Yard"
+  description = "Target Metastore URI for Shunting Yard."
   type        = "string"
 }
 
 variable "shunting_yard_sqs_queue" {
-  description = "SQS Queue for reading events"
+  description = "SQS Queue for reading events."
   type        = "string"
 }
 
 variable "metastore_events_sns_topic" {
-  description = "SNS Topic for Hive Metastore events"
+  description = "SNS Topic for Hive Metastore events."
   type        = "string"
 }
 
 variable "selected_tables" {
-  description = "Tables selected for Shunting Yard Replication"
+  description = "Tables selected for Shunting Yard Replication."
   type        = "string"
 }
