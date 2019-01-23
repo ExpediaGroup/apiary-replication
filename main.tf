@@ -63,11 +63,6 @@ resource "aws_iam_role" "shuntingyard_task" {
 EOF
 }
 
-# resource "aws_iam_role_policy_attachment" "task_managed" {
-#   role       = "${aws_iam_role.shuntingyard_task.id}"
-#   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-# }
-
 resource "aws_iam_role_policy" "s3_for_shuntingyard" {
   name  = "s3"
   role  = "${aws_iam_role.shuntingyard_task.id}"
