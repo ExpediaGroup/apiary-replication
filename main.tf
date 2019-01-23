@@ -160,13 +160,6 @@ resource "aws_security_group" "sy_sg" {
   tags   = "${var.tags}"
 
   ingress {
-    from_port   = 48869
-    to_port     = 48869
-    protocol    = "tcp"
-    cidr_blocks = "${var.ingress_cidr}"
-  }
-
-  ingress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

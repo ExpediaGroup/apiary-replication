@@ -14,7 +14,6 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | sy_ecs_task_count | Number of ECS tasks to create. | string | `1` | no |
 | docker_image | Full path to Shunting Yard Docker image. | string | - | yes |
 | docker_version | Shunting Yard Docker image version. | string | - | yes |
-| ingress_cidr | Generally allowed ingress CIDR list. | list | - | yes |
 | instance_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `` | no |
 | subnets | ECS container subnets. | list | - | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
@@ -48,7 +47,6 @@ module "apiary-shuntingyard" {
   metastore_events_sns_topic         = "arn:aws:sns:us-west-2:1234567:metastore-events-sns-topic"
   selected_tables                    = "database_1.table_1, database_2.table_2"
 
-  ingress_cidr                       = ["10.0.0.0/8", "172.16.0.0/12"]
   docker_image                       = "your.docker.repo/apiary-shuntingyard"
   docker_version                     = "latest"
 }

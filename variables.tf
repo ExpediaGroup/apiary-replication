@@ -64,11 +64,6 @@ EOF
   default = "1024"
 }
 
-variable "ingress_cidr" {
-  description = "Generally allowed ingress CIDR list."
-  type        = "list"
-}
-
 variable "docker_image" {
   description = "Full path Shunting Yard Docker image."
   type        = "string"
