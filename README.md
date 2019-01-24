@@ -20,7 +20,7 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | source_metastore_uri | Source Metastore URI for Shunting Yard | string | - | yes |
 | target_metastore_uri | Target Metastore URI for Shunting Yard | string | - | yes |
 | metastore_events_sns_topic | SNS Topic for Hive Metastore events | string | - | yes |
-| selected_tables | Tables selected for Shunting Yard Replication. Supported Format: database_1.table_1, database_2.table_2 | list | `<list>` | yes |
+| selected_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | list | `<list>` | yes |
 
 ## Usage
 
