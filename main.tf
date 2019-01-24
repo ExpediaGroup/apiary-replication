@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018 Expedia Inc.
+ * Copyright (C) 2019 Expedia Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -108,7 +108,7 @@ resource "aws_iam_role_policy" "sqs_for_shuntingyard" {
           "sqs:ReceiveMessage",
           "sqs:DeleteMessage"
         ],
-        "Resource": "*"
+        "Resource": "${aws_sqs_queue.shuntingyard_sqs_queue.arn}"
     }
 }
 EOF
@@ -179,7 +179,7 @@ resource "aws_ecs_service" "shuntingyard_service" {
   launch_type     = "FARGATE"
   cluster         = "${aws_ecs_cluster.shuntingyard.id}"
   task_definition = "${aws_ecs_task_definition.shuntingyard.arn}"
-  desired_count   = "${var.sy_ecs_task_count}"
+  desired_count   = "1"
 
   network_configuration {
     security_groups = ["${aws_security_group.sy_sg.id}"]

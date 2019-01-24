@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018 Expedia Inc.
+ * Copyright (C) 2019 Expedia Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -13,12 +13,6 @@ variable "instance_name" {
 variable "aws_region" {
   description = "AWS region to use for resources."
   type        = "string"
-}
-
-variable "sy_ecs_task_count" {
-  description = "Number of ECS tasks to create."
-  type        = "string"
-  default     = "1"
 }
 
 variable "vpc_id" {
@@ -65,7 +59,7 @@ EOF
 }
 
 variable "docker_image" {
-  description = "Full path Shunting Yard Docker image."
+  description = "Full path of Shunting Yard Docker image."
   type        = "string"
 }
 
@@ -81,11 +75,6 @@ variable "source_metastore_uri" {
 
 variable "target_metastore_uri" {
   description = "Target Metastore URI for Shunting Yard."
-  type        = "string"
-}
-
-variable "shunting_yard_sqs_queue" {
-  description = "SQS Queue for reading events."
   type        = "string"
 }
 
