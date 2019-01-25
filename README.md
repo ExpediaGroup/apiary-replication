@@ -13,8 +13,7 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `4096` | no |
 | docker_image | Full path to Shunting Yard Docker image. | string | - | yes |
 | docker_version | Shunting Yard Docker image version. | string | - | yes |
-| allowed_s3_buckets | List of S3 Buckets to which SY will have read-write access.
-eg. `["bucket-1", "bucket-2"]` | list | `<list>` | no |
+| allowed_s3_buckets | List of S3 Buckets to which SY will have read-write access. eg. `["bucket-1", "bucket-2"]` | list | `<list>` | no |
 | instance_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `` | no |
 | subnets | ECS container subnets. | list | - | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
