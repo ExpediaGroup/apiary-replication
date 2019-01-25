@@ -87,7 +87,10 @@ resource "aws_iam_role_policy" "s3_for_shuntingyard" {
                 "s3:PutObjectVersionAcl",
                 "s3:PutObjectVersionTagging"
             ],
-            "Resource": "*"
+            "Resource": [
+                          "${join("\",\"", formatlist("arn:aws:s3:::%s",var.allowed_s3_buckets))}",
+                          "${join("\",\"", formatlist("arn:aws:s3:::%s/*",var.allowed_s3_buckets))}"
+                        ]
         }
     ]
 }

@@ -13,6 +13,8 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `4096` | no |
 | docker_image | Full path to Shunting Yard Docker image. | string | - | yes |
 | docker_version | Shunting Yard Docker image version. | string | - | yes |
+| allowed_s3_buckets | List of S3 Buckets to which SY will have read-write access.
+eg. `["bucket-1", "bucket-2"]` | list | `<list>` | no |
 | instance_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `` | no |
 | subnets | ECS container subnets. | list | - | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
@@ -20,18 +22,19 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | source_metastore_uri | Source Metastore URI for Shunting Yard | string | - | yes |
 | target_metastore_uri | Target Metastore URI for Shunting Yard | string | - | yes |
 | metastore_events_sns_topic | SNS Topic for Hive Metastore events | string | - | yes |
-| selected_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | list | `<list>` | yes |
+| selected_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | string | - | yes |
 
 ## Usage
 
 Example module invocation:
 ```
 module "apiary-shuntingyard" {
-  source            = "git::https://github.com/ExpediaInc/apiary-replication.git?ref=master"
-  instance_name     = "shuntingyard-test"
-  aws_region        = "us-west-2"
-  vpc_id            = "vpc-1"
-  subnets           = ["subnet-1", "subnet-2"]
+  source             = "git::https://github.com/ExpediaInc/apiary-replication.git?ref=master"
+  instance_name      = "shuntingyard-test"
+  aws_region         = "us-west-2"
+  vpc_id             = "vpc-1"
+  subnets            = ["subnet-1", "subnet-2"]
+  allowed_s3_buckets = ["bucket-1", "bucket-2"]
 
   tags = {
     Name = "Apiary-Shuntingyard"

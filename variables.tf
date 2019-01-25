@@ -68,6 +68,11 @@ variable "docker_version" {
   type        = "string"
 }
 
+variable "allowed_s3_buckets" {
+  description = "List of S3 Buckets to which SY will have read-write access"
+  type        = "list"
+}
+
 variable "source_metastore_uri" {
   description = "Source Metastore URI for Shunting Yard."
   type        = "string"
