@@ -69,7 +69,7 @@ variable "docker_version" {
 }
 
 variable "allowed_s3_buckets" {
-  description = "List of S3 Buckets to which SY will have read-write access"
+  description = "List of S3 Buckets to which SY will have read-write access."
   type        = "list"
 }
 

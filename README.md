@@ -18,9 +18,9 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | subnets | ECS container subnets. | list | - | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
 | vpc_id | VPC ID. | string | - | yes |
-| source_metastore_uri | Source Metastore URI for Shunting Yard | string | - | yes |
-| target_metastore_uri | Target Metastore URI for Shunting Yard | string | - | yes |
-| metastore_events_sns_topic | SNS Topic for Hive Metastore events | string | - | yes |
+| source_metastore_uri | Source Metastore URI for Shunting Yard. | string | - | yes |
+| target_metastore_uri | Target Metastore URI for Shunting Yard. | string | - | yes |
+| metastore_events_sns_topic | SNS Topic for Hive Metastore events. | string | - | yes |
 | selected_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | string | - | yes |
 
 ## Usage

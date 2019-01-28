@@ -123,12 +123,12 @@ resource "aws_cloudwatch_log_group" "shuntingyard_ecs" {
 }
 
 data "template_file" "shuntingyard_config_yaml" {
-  template = "${file("${path.module}/templates/shunting-yard-config.yml.tmpl")}"
+  template = "${file("${path.module}/templates/shuntingyard-config.yml.tmpl")}"
 
   vars {
     source_metastore_uri    = "${var.source_metastore_uri}"
     target_metastore_uri    = "${var.target_metastore_uri}"
-    shunting_yard_sqs_queue = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
+    shuntingyard_sqs_queue = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
     selected_tables         = "${var.selected_tables}"
   }
 }
