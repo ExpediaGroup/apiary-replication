@@ -5,7 +5,7 @@
  */
 
 resource "aws_sqs_queue" "shuntingyard_sqs_queue" {
-   name = "${local.instance_alias}-sqs-queue"
+  name = "${local.instance_alias}-sqs-queue"
 }
 
 resource "aws_sns_topic_subscription" "sqs_hive_metastore_sns_subscription" {
@@ -64,8 +64,8 @@ EOF
 }
 
 resource "aws_iam_role_policy" "s3_for_shuntingyard" {
-  name  = "s3"
-  role  = "${aws_iam_role.shuntingyard_task.id}"
+  name = "s3"
+  role = "${aws_iam_role.shuntingyard_task.id}"
 
   policy = <<EOF
 {
@@ -98,8 +98,8 @@ EOF
 }
 
 resource "aws_iam_role_policy" "sqs_for_shuntingyard" {
-  name  = "sqs"
-  role  = "${aws_iam_role.shuntingyard_task.id}"
+  name = "sqs"
+  role = "${aws_iam_role.shuntingyard_task.id}"
 
   policy = <<EOF
 {
@@ -126,10 +126,10 @@ data "template_file" "shuntingyard_config_yaml" {
   template = "${file("${path.module}/templates/shunting-yard-config.yml.tmpl")}"
 
   vars {
-    source_metastore_uri      = "${var.source_metastore_uri}"
-    target_metastore_uri      = "${var.target_metastore_uri}"
-    shunting_yard_sqs_queue   = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
-    selected_tables           = "${var.selected_tables}"
+    source_metastore_uri    = "${var.source_metastore_uri}"
+    target_metastore_uri    = "${var.target_metastore_uri}"
+    shunting_yard_sqs_queue = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
+    selected_tables         = "${var.selected_tables}"
   }
 }
 
@@ -137,12 +137,12 @@ data "template_file" "shuntingyard" {
   template = "${file("${path.module}/templates/shuntingyard.json")}"
 
   vars {
-    heapsize            = "${var.memory}"
-    docker_image        = "${var.docker_image}"
-    docker_version      = "${var.docker_version}"
-    region              = "${var.aws_region}"
-    loggroup            = "${aws_cloudwatch_log_group.shuntingyard_ecs.name}"
-    shuntingyard_config_yaml   = "${base64encode(data.template_file.shuntingyard_config_yaml.rendered)}"
+    heapsize                 = "${var.memory}"
+    docker_image             = "${var.docker_image}"
+    docker_version           = "${var.docker_version}"
+    region                   = "${var.aws_region}"
+    loggroup                 = "${aws_cloudwatch_log_group.shuntingyard_ecs.name}"
+    shuntingyard_config_yaml = "${base64encode(data.template_file.shuntingyard_config_yaml.rendered)}"
   }
 }
 
