@@ -1,0 +1,17 @@
+---
+# Copyright (C) 2019 Expedia Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+
+source-catalog:
+  name: aws-source
+  hive-metastore-uris: ${source_metastore_uri}
+replica-catalog:
+  name: aws-target
+  hive-metastore-uris: ${target_metastore_uri}
+event-receiver:
+  message-reader-factory-class: com.hotels.shunting.yard.receiver.sqs.messaging.SqsMessageReaderFactory
+  configuration-properties:
+    com.hotels.shunting.yard.event.receiver.sqs.queue: ${shuntingyard_sqs_queue}
+    com.hotels.shunting.yard.event.receiver.sqs.wait.time.seconds: 15
+source-table-filter:
+  table-names: ${selected_tables}

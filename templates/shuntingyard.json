@@ -1,0 +1,25 @@
+[
+  {
+    "name": "shuntingyard",
+    "image": "${docker_image}:${docker_version}",
+    "essential": true,
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${loggroup}",
+            "awslogs-region": "${region}",
+            "awslogs-stream-prefix": "/"
+        }
+    },
+    "environment":[
+     {
+        "name": "HEAPSIZE",
+        "value": "${heapsize}"
+     },
+     {
+        "name": "SHUNTINGYARD_CONFIG_YAML",
+        "value": "${shuntingyard_config_yaml}"
+     }
+    ]
+  }
+]
