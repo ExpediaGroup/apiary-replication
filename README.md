@@ -8,20 +8,24 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 ## Variables
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| aws_region | AWS region to use for resources. | string | - | yes |
-| cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `1024` | no |
-| memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `4096` | no |
-| docker_image | Full path to Shunting Yard Docker image. | string | - | yes |
-| docker_version | Shunting Yard Docker image version. | string | - | yes |
-| allowed_s3_buckets | List of S3 Buckets to which Shunting Yard will have read-write access. eg. `["bucket-1", "bucket-2"]` | list | `<list>` | no |
-| instance_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `` | no |
-| subnets | ECS container subnets. | list | - | yes |
+| allowed\_s3\_buckets | List of S3 Buckets to which SY will have read-write access. | list | n/a | yes |
+| aws\_region | AWS region to use for resources. | string | n/a | yes |
+| cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"1024"` | no |
+| docker\_image | Full path of Shunting Yard Docker image. | string | n/a | yes |
+| docker\_version | Shunting Yard Docker image version. | string | n/a | yes |
+| graphite\_host | Graphite server configured in Shunting Yard to send metrics to. | string | `"localhost"` | no |
+| graphite\_namespace | Namespace for all metrics sent to Graphite from this Shunting Yard instance. | string | `"com.hotels"` | no |
+| graphite\_port | Graphite server port. | string | `"2003"` | no |
+| graphite\_prefix | Prefix addded to all metrics sent to Graphite from this Shunting Yard instance. | string | `"shuntingyard"` | no |
+| instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
+| memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
+| metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
+| selected\_tables | Tables selected for Shunting Yard Replication. | string | n/a | yes |
+| source\_metastore\_uri | Source Metastore URI for Shunting Yard. | string | n/a | yes |
+| subnets | ECS container subnets. | list | n/a | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
-| vpc_id | VPC ID. | string | - | yes |
-| source_metastore_uri | Source Metastore URI for Shunting Yard. | string | - | yes |
-| target_metastore_uri | Target Metastore URI for Shunting Yard. | string | - | yes |
-| metastore_events_sns_topic | SNS Topic for Hive Metastore events. | string | - | yes |
-| selected_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | string | - | yes |
+| target\_metastore\_uri | Target Metastore URI for Shunting Yard. | string | n/a | yes |
+| vpc\_id | VPC ID. | string | n/a | yes |
 
 ## Usage
 
