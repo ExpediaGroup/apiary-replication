@@ -19,6 +19,10 @@
      {
         "name": "SHUNTINGYARD_CONFIG_YAML",
         "value": "${shuntingyard_config_yaml}"
+     },
+     {
+        "name": "CT_COMMON_CONFIG_YAML",
+        "value": "${ct_common_config_yaml}"
      }
     ]
   }

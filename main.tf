@@ -128,8 +128,19 @@ data "template_file" "shuntingyard_config_yaml" {
   vars {
     source_metastore_uri    = "${var.source_metastore_uri}"
     target_metastore_uri    = "${var.target_metastore_uri}"
-    shuntingyard_sqs_queue = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
+    shuntingyard_sqs_queue  = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
     selected_tables         = "${var.selected_tables}"
+  }
+}
+
+data "template_file" "ct_common_config_yaml" {
+  template = "${file("${path.module}/templates/ct-common-config.yml.tmpl")}"
+
+  vars {
+    graphite_host      = "${var.graphite_host}"
+    graphite_port      = "${var.graphite_port}"
+    graphite_namespace = "${var.graphite_namespace}"
+    graphite_prefix    = "${var.graphite_prefix}"
   }
 }
 
@@ -143,6 +154,7 @@ data "template_file" "shuntingyard" {
     region                   = "${var.aws_region}"
     loggroup                 = "${aws_cloudwatch_log_group.shuntingyard_ecs.name}"
     shuntingyard_config_yaml = "${base64encode(data.template_file.shuntingyard_config_yaml.rendered)}"
+    ct_common_config_yaml    = "${base64encode(data.template_file.ct_common_config_yaml.rendered)}"
   }
 }
 
