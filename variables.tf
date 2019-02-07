@@ -69,7 +69,7 @@ variable "docker_version" {
 }
 
 variable "ct_common_config_yaml" {
-  description = "Common Circus Train Config for internal Circus Train instance"
+  description = "Common Circus Train Config for internal Circus Train instance. Refer to [Circus-Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for more details."
   type        = "string"
 }
 
@@ -94,6 +94,6 @@ variable "metastore_events_sns_topic" {
 }
 
 variable "selected_tables" {
-  description = "Tables selected for Shunting Yard Replication."
+  description = "Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2`"
   type        = "string"
 }

@@ -8,16 +8,16 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 ## Variables
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| allowed\_s3\_buckets | List of S3 Buckets to which SY will have read-write access. | list | n/a | yes |
+| allowed\_s3\_buckets | List of S3 Buckets to which Shunting Yard will have read-write access. eg. `["bucket-1", "bucket-2"]`. | list | `n/a` | yes |
 | aws\_region | AWS region to use for resources. | string | n/a | yes |
 | cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"1024"` | no |
-| ct\_common\_config\_yaml | Common Circus Train Config for internal Circus Train instance | string | n/a | yes |
+| ct\_common\_config\_yaml | Common Circus Train Config for internal Circus Train instance. Refer to [Circus-Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for more details. | string | n/a | yes |
 | docker\_image | Full path of Shunting Yard Docker image. | string | n/a | yes |
 | docker\_version | Shunting Yard Docker image version. | string | n/a | yes |
 | instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
-| memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
+| memory | The amount of memory (in MiB) allocated to the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
 | metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
-| selected\_tables | Tables selected for Shunting Yard Replication. | string | n/a | yes |
+| selected\_tables | Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2` | string | n/a | yes |
 | source\_metastore\_uri | Source Metastore URI for Shunting Yard. | string | n/a | yes |
 | subnets | ECS container subnets. | list | n/a | yes |
 | tags | A map of tags to apply to resources. | map | `<map>` | no |
