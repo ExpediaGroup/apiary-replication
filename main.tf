@@ -133,17 +133,6 @@ data "template_file" "shuntingyard_config_yaml" {
   }
 }
 
-data "template_file" "ct_common_config_yaml" {
-  template = "${file("${path.module}/templates/ct-common-config.yml.tmpl")}"
-
-  vars {
-    graphite_host      = "${var.graphite_host}"
-    graphite_port      = "${var.graphite_port}"
-    graphite_namespace = "${var.graphite_namespace}"
-    graphite_prefix    = "${var.graphite_prefix}"
-  }
-}
-
 data "template_file" "shuntingyard" {
   template = "${file("${path.module}/templates/shuntingyard.json")}"
 
@@ -154,7 +143,7 @@ data "template_file" "shuntingyard" {
     region                   = "${var.aws_region}"
     loggroup                 = "${aws_cloudwatch_log_group.shuntingyard_ecs.name}"
     shuntingyard_config_yaml = "${base64encode(data.template_file.shuntingyard_config_yaml.rendered)}"
-    ct_common_config_yaml    = "${base64encode(data.template_file.ct_common_config_yaml.rendered)}"
+    ct_common_config_yaml    = "${base64encode(var.ct_common_config_yaml)}"
   }
 }
 

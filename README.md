@@ -11,12 +11,9 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | allowed\_s3\_buckets | List of S3 Buckets to which SY will have read-write access. | list | n/a | yes |
 | aws\_region | AWS region to use for resources. | string | n/a | yes |
 | cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"1024"` | no |
+| ct\_common\_config\_yaml | Common Circus Train Config for internal Circus Train instance | string | n/a | yes |
 | docker\_image | Full path of Shunting Yard Docker image. | string | n/a | yes |
 | docker\_version | Shunting Yard Docker image version. | string | n/a | yes |
-| graphite\_host | Graphite server configured in Shunting Yard to send metrics to. | string | `"localhost"` | no |
-| graphite\_namespace | Namespace for all metrics sent to Graphite from this Shunting Yard instance. | string | `"com.hotels"` | no |
-| graphite\_port | Graphite server port. | string | `"2003"` | no |
-| graphite\_prefix | Prefix addded to all metrics sent to Graphite from this Shunting Yard instance. | string | `"shuntingyard"` | no |
 | instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
 | memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
 | metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
