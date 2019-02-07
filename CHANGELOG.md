@@ -7,9 +7,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### Added
 - New variable for passing Circus Train common config to Shunting Yard
 
-### Changed
-- Shunting Yard version to 0.0.8 (was 0.0.7)
-
 ## [1.0.0] - 2019-02-06
 ### Added
 - First version of Shunting Yard Integration with Apiary.
