@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [1.1.0] - TBD
 ### Added
-- New variables for passing Graphite Configurations to Shunting Yard
+- New variable for passing Circus Train common config to Shunting Yard
+
+### Changed
+- Shunting Yard version to 0.0.8 (was 0.0.7)
 
 ## [1.0.0] - 2019-02-06
 ### Added
