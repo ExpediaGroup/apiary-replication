@@ -74,7 +74,7 @@ variable "ct_common_config_yaml" {
 }
 
 variable "allowed_s3_buckets" {
-  description = "List of S3 Buckets to which SY will have read-write access."
+  description = "List of S3 Buckets to which Shunting Yard will have read-write access."
   type        = "list"
 }
 
