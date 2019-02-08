@@ -68,8 +68,13 @@ variable "docker_version" {
   type        = "string"
 }
 
+variable "ct_common_config_yaml" {
+  description = "Common Circus Train configuration to be passed to internal Circus Train instance. It can be used, for example to configure Graphite for Circus Train. Refer to [Circus Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for an exhaustive list of options supported by Circus Train."
+  type        = "string"
+}
+
 variable "allowed_s3_buckets" {
-  description = "List of S3 Buckets to which SY will have read-write access."
+  description = "List of S3 Buckets to which Shunting Yard will have read-write access."
   type        = "list"
 }
 
@@ -89,6 +94,6 @@ variable "metastore_events_sns_topic" {
 }
 
 variable "selected_tables" {
-  description = "Tables selected for Shunting Yard Replication."
+  description = "Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2`"
   type        = "string"
 }
