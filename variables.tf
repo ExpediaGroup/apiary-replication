@@ -69,7 +69,7 @@ variable "docker_version" {
 }
 
 variable "ct_common_config_yaml" {
-  description = "Common Circus Train configuration to be passed to internal Circus Train instance. It can be used, for example to configure Graphite for Circus Train. Refer to [Circus-Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for an exhaustive list of options supported by Circus Train."
+  description = "Common Circus Train configuration to be passed to internal Circus Train instance. It can be used, for example to configure Graphite for Circus Train. Refer to [Circus Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for an exhaustive list of options supported by Circus Train."
   type        = "string"
 }
 
