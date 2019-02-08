@@ -45,11 +45,14 @@ module "apiary-shuntingyard" {
   target_metastore_uri               = "thrift://ip-address:9083"
   metastore_events_sns_topic         = "arn:aws:sns:us-west-2:1234567:metastore-events-sns-topic"
   selected_tables                    = "database_1.table_1, database_2.table_2"
+  ct_common_config_yaml              = "${data.template_file.ct_common_config_yaml.rendered}"
 
   docker_image                       = "your.docker.repo/apiary-shuntingyard"
   docker_version                     = "latest"
 }
 ```
+
+Please note that the parameter `ct_common_config_yaml` takes in the contents of the ct-common-config.yml file and should be passed in the manner described above using templates.
 
 # Contact
 
