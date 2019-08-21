@@ -2,6 +2,7 @@
   {
     "name": "shuntingyard",
     "image": "${docker_image}:${docker_version}",
+    ${docker_auth}
     "essential": true,
     "logConfiguration": {
         "logDriver": "awslogs",
