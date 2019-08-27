@@ -34,18 +34,18 @@ Example module invocation:
 module "apiary-shuntingyard" {
   source                      = "git::https://github.com/ExpediaInc/apiary-replication.git"
   aws_region                  = "us-west-2"
-  instance_name               = "shuntingyard-test"
-  shuntingyard_tags           = "${var.tags}"
   vpc_id                      = "vpc-1"
   subnets                     = ["subnet-1", "subnet-2"]
+  instance_name               = "shuntingyard-test"
+  docker_image                = "your.docker.repo/apiary-shuntingyard"
+  docker_version              = "latest"
+  ct_common_config_yaml       = "${data.template_file.ct_common_config_yaml.rendered}"  
   source_metastore_uri        = "thrift://ip-address:9083"
   target_metastore_uri        = "thrift://ip-address:9083"
   metastore_events_sns_topic  = "arn:aws:sns:us-west-2:1234567:metastore-events-sns-topic"
-  selected_tables             = [ "database_1.table_1, database_2.table_2" ]
+  selected_tables             = [ "database_1.table_1", "database_2.table_2" ]
   allowed_s3_buckets          = [ "bucket-1", "bucket-2" ]
-  ct_common_config_yaml       = "${data.template_file.ct_common_config_yaml.rendered}"
-  docker_image                = "your.docker.repo/apiary-shuntingyard"
-  docker_version              = "latest"
+  shuntingyard_tags           = "${var.tags}" 
 }
 ```
 
