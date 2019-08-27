@@ -45,7 +45,10 @@ module "apiary-shuntingyard" {
   metastore_events_sns_topic  = "arn:aws:sns:us-west-2:1234567:metastore-events-sns-topic"
   selected_tables             = [ "database_1.table_1", "database_2.table_2" ]
   allowed_s3_buckets          = [ "bucket-1", "bucket-2" ]
-  shuntingyard_tags           = "${var.tags}" 
+  shuntingyard_tags           = {
+                                    Name = "Apiary Replication"
+                                    Team = "Operations"
+                                }
 }
 ```
 
