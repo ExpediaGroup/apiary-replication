@@ -3,7 +3,7 @@
 
 Terraform module for setting up infrastructure for [Shunting Yard](https://github.com/HotelsDotCom/shunting-yard).
 
-For more information please refer to the main [Apiary](https://github.com/ExpediaInc/apiary) project page.
+For more information please refer to the main [Apiary](https://github.com/ExpediaGroup/apiary) project page.
 
 ## Variables
 | Name | Description | Type | Default | Required |
@@ -18,8 +18,8 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
 | memory | The amount of memory (in MiB) allocated to the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
 | metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
-| shuntingyard_sqs_queue_wait_timeout | Shunting Yard SQS queue wait timeout | string | 15 | no |
-| shuntingyard_sqs_queue_stale_messages_timeout | Shunting Yard SQS queue stale messages alert timeout | string | 300 | no |
+| shuntingyard_sqs_queue_wait_timeout | Shunting Yard SQS queue wait timeout (in seconds) | string | 15 | no |
+| shuntingyard_sqs_queue_stale_messages_timeout | Shunting Yard SQS queue stale messages alert timeout (in seconds) | string | 300 | no |
 | selected\_tables | Tables selected for Shunting Yard Replication. Supported Format: `[ "database_1.table_1", "database_2.table_2" ]` | list | [] | no |
 | source\_metastore\_uri | Source Metastore URI for Shunting Yard. | string | n/a | yes |
 | subnets | ECS container subnets. | list | n/a | yes |
@@ -32,7 +32,7 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 Example module invocation:
 ```
 module "apiary-shuntingyard" {
-  source                      = "git::https://github.com/ExpediaInc/apiary-replication.git"
+  source                      = "git::https://github.com/ExpediaGroup/apiary-replication.git"
   aws_region                  = "us-west-2"
   vpc_id                      = "vpc-1"
   subnets                     = ["subnet-1", "subnet-2"]

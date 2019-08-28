@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Expedia Inc.
+ * Copyright (C) 2019 Expedia, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -88,7 +88,7 @@ variable "metastore_events_sns_topic" {
 }
 
 variable "shuntingyard_sqs_queue_wait_timeout" {
-  description = "Wait timeout for connecting to the Shunting Yard SQS queue"
+  description = "Wait timeout for connecting to the Shunting Yard SQS queue (in seconds)"
   type        = "string"
   default     = 15
 }

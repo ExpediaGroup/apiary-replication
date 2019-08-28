@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2019 Expedia Inc.
+ * Copyright (C) 2019 Expedia, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
 
 resource "aws_security_group" "shuntingyard_sg" {
-  name   = "${local.instance_alias}-sg2"
+  name   = "${local.instance_alias}-sg"
   vpc_id = "${var.vpc_id}"
   tags   = "${var.shuntingyard_tags}"
 
