@@ -4,6 +4,6 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
 
-terraform {
-  required_version = "~> 0.11.1"
+resource "aws_sns_topic" "shuntingyard_ops_sns" {
+  name = "${local.instance_alias}-operational-events"
 }

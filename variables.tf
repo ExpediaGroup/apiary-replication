@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Expedia Inc.
+ * Copyright (C) 2019 Expedia, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -26,15 +26,9 @@ variable "subnets" {
 }
 
 # Tags
-variable "tags" {
+variable "shuntingyard_tags" {
   description = "A map of tags to apply to resources."
   type        = "map"
-
-  default = {
-    Environment = ""
-    Application = ""
-    Team        = ""
-  }
 }
 
 variable "memory" {
@@ -93,7 +87,31 @@ variable "metastore_events_sns_topic" {
   type        = "string"
 }
 
-variable "selected_tables" {
-  description = "Tables selected for Shunting Yard Replication. Supported Format: `database_1.table_1, database_2.table_2`"
+variable "shuntingyard_sqs_queue_wait_timeout" {
+  description = "Wait timeout for connecting to the Shunting Yard SQS queue (in seconds)"
   type        = "string"
+  default     = 15
+}
+
+variable "shuntingyard_sqs_queue_stale_messages_timeout" {
+  description = "Shunting Yard SQS Queue Cloudwatch Alert timeout for messages older than this number of seconds."
+  type        = "string"
+  default     = 300
+}
+
+variable "selected_tables" {
+  description = <<EOF
+Tables selected for Shunting Yard Replication. 
+Supported Format: [ "database_1.table_1", "database_2.table_2" ]
+Wildcards are not supported, i.e. you need to specify each table explicitly.
+EOF
+
+  type    = "list"
+  default = []
+}
+
+variable "docker_registry_auth_secret_name" {
+  description = "Docker Registry authentication SecretManager secret name."
+  type        = "string"
+  default     = ""
 }
