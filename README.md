@@ -18,12 +18,12 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
 | memory | The amount of memory (in MiB) allocated to the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
 | metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
-| shuntingyard_sqs_queue_wait_timeout | Shunting Yard SQS queue wait timeout (in seconds) | string | 15 | no |
-| shuntingyard_sqs_queue_stale_messages_timeout | Shunting Yard SQS queue stale messages alert timeout (in seconds) | string | 300 | no |
+| shuntingyard\_sqs\_queue\_wait\_timeout | Shunting Yard SQS queue wait timeout (in seconds) | string | 15 | no |
+| shuntingyard\_sqs\_queue\_stale\_messages\_timeout | Shunting Yard SQS queue stale messages alert timeout (in seconds) | string | 300 | no |
 | selected\_tables | Tables selected for Shunting Yard Replication. Supported Format: `[ "database_1.table_1", "database_2.table_2" ]` | list | [] | no |
 | source\_metastore\_uri | Source Metastore URI for Shunting Yard. | string | n/a | yes |
 | subnets | ECS container subnets. | list | n/a | yes |
-| shuntingyard_tags | A map of tags to apply to resources. | map | `<map>` | no |
+| shuntingyard\_tags | A map of tags to apply to resources. | map | `<map>` | no |
 | target\_metastore\_uri | Target Metastore URI for Shunting Yard. | string | n/a | yes |
 | vpc\_id | VPC ID. | string | n/a | yes |
 
