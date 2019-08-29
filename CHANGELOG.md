@@ -6,13 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [1.2.0] - TBD
 ### Added
 - Support for Docker Auth.
-- Ability to store credentials for docker auth in AWS secrets manager.
+- Ability to store credentials for Docker auth in AWS secrets manager.
 - Cloudwatch dashboard.
 - Cloudwatch alerts.
 - SQS queue permissions.
 
 ### Changed
-- `selected_tables` variable is now a list 
+- `selected_tables` variable is now a list.
 
 ## [1.1.0] - 2019-02-08
 ### Added
