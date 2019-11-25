@@ -5,25 +5,27 @@ Terraform module for setting up infrastructure for [Shunting Yard](https://githu
 
 For more information please refer to the main [Apiary](https://github.com/ExpediaGroup/apiary) project page.
 
-## Variables
+## Inputs
+
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| allowed\_s3\_buckets | List of S3 Buckets to which Shunting Yard will have read-write access. eg. `["bucket-1", "bucket-2"]`. | list | `n/a` | yes |
+| allowed\_s3\_buckets | List of S3 Buckets to which Shunting Yard will have read-write access. | list | n/a | yes |
 | aws\_region | AWS region to use for resources. | string | n/a | yes |
 | cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"1024"` | no |
 | ct\_common\_config\_yaml | Common Circus Train configuration to be passed to internal Circus Train instance. It can be used, for example to configure Graphite for Circus Train. Refer to [Circus Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for an exhaustive list of options supported by Circus Train. | string | n/a | yes |
 | docker\_image | Full path of Shunting Yard Docker image. | string | n/a | yes |
+| docker\_registry\_auth\_secret\_name | Docker Registry authentication SecretManager secret name. | string | `""` | no |
 | docker\_version | Shunting Yard Docker image version. | string | n/a | yes |
-| docker\_registry\_auth\_secret\_name | Docker Registry authentication SecretManager secret name. | string | `` | no |
 | instance\_name | Shunting Yard instance name to identify resources in multi-instance deployments. | string | `""` | no |
-| memory | The amount of memory (in MiB) allocated to the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
+| memory | The amount of memory (in MiB) used to allocate for the Shunting Yard container. Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"4096"` | no |
 | metastore\_events\_sns\_topic | SNS Topic for Hive Metastore events. | string | n/a | yes |
-| shuntingyard\_sqs\_queue\_wait\_timeout | Shunting Yard SQS queue wait timeout (in seconds) | string | 15 | no |
-| shuntingyard\_sqs\_queue\_stale\_messages\_timeout | Shunting Yard SQS queue stale messages alert timeout (in seconds) | string | 300 | no |
-| selected\_tables | Tables selected for Shunting Yard Replication. Supported Format: `[ "database_1.table_1", "database_2.table_2" ]` | list | [] | no |
+| orphaned\_data\_strategy | Orphaned data strategy to use for stale data during replication. Supported strategies: "NONE", "HOUSEKEEPING" (default). | string | `"HOUSEKEEPING"` | no |
+| selected\_tables | Tables selected for Shunting Yard Replication.  Supported Format: [ "database_1.table_1", "database_2.table_2" ] Wildcards are not supported, i.e. you need to specify each table explicitly. | list | `<list>` | no |
+| shuntingyard\_sqs\_queue\_stale\_messages\_timeout | Shunting Yard SQS Queue Cloudwatch Alert timeout for messages older than this number of seconds. | string | `"300"` | no |
+| shuntingyard\_sqs\_queue\_wait\_timeout | Wait timeout for connecting to the Shunting Yard SQS queue (in seconds) | string | `"15"` | no |
+| shuntingyard\_tags | A map of tags to apply to resources. | map | n/a | yes |
 | source\_metastore\_uri | Source Metastore URI for Shunting Yard. | string | n/a | yes |
 | subnets | ECS container subnets. | list | n/a | yes |
-| shuntingyard\_tags | A map of tags to apply to resources. | map | `<map>` | no |
 | target\_metastore\_uri | Target Metastore URI for Shunting Yard. | string | n/a | yes |
 | vpc\_id | VPC ID. | string | n/a | yes |
 
