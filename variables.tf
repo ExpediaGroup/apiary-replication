@@ -110,6 +110,15 @@ EOF
   default = []
 }
 
+variable "orphaned_data_strategy" {
+  description = <<EOF
+Orphaned data strategy to use for stale data during replication. Supported strategies: "NONE", "HOUSEKEEPING" (default).
+EOF
+
+  type    = "string"
+  default = "HOUSEKEEPING"
+}
+
 variable "docker_registry_auth_secret_name" {
   description = "Docker Registry authentication SecretManager secret name."
   type        = "string"
