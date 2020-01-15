@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [1.2.1] - TBD
 ### Added
-- Adding orphaned data strategy.
+- A new argument `orphaned_data_strategy` to use for handling stale data during replication.
 
 ## [1.2.0] - 2019-08-29
 ### Added
