@@ -13,6 +13,7 @@ data "template_file" "shuntingyard_config_yaml" {
     shuntingyard_sqs_queue              = "${aws_sqs_queue.shuntingyard_sqs_queue.id}"
     shuntingyard_sqs_queue_wait_timeout = "${var.shuntingyard_sqs_queue_wait_timeout}"
     selected_tables                     = "${join("\n", formatlist("    - %s", var.selected_tables))}"
+    orphaned_data_strategy              = "${format("orphaned-data-strategy: %s", var.orphaned_data_strategy)}"
   }
 }
 
