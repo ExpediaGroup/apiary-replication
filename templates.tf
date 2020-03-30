@@ -28,6 +28,7 @@ data "template_file" "shuntingyard" {
     loggroup                 = "${aws_cloudwatch_log_group.shuntingyard_ecs.name}"
     shuntingyard_config_yaml = "${base64encode(data.template_file.shuntingyard_config_yaml.rendered)}"
     ct_common_config_yaml    = "${base64encode(var.ct_common_config_yaml)}"
+    ct_log4j_xml             = "${base64encode(var.ct_log4j_xml)}"
 
     #to instruct ECS to use repositoryCredentials for private docker registry
     docker_auth = "${var.docker_registry_auth_secret_name == "" ? "" : format("\"repositoryCredentials\" :{\n \"credentialsParameter\":\"%s\"\n},", join("", data.aws_secretsmanager_secret.docker_registry.*.arn))}"

@@ -13,6 +13,7 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | aws\_region | AWS region to use for resources. | string | n/a | yes |
 | cpu | The number of CPU units to reserve for the Shunting Yard container. Valid values can be 256, 512, 1024, 2048 and 4096. Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html | string | `"1024"` | no |
 | ct\_common\_config\_yaml | Common Circus Train configuration to be passed to internal Circus Train instance. It can be used, for example to configure Graphite for Circus Train. Refer to [Circus Train README](https://github.com/HotelsDotCom/circus-train/blob/master/README.md) for an exhaustive list of options supported by Circus Train. | string | n/a | yes |
+| ct\_log4j\_xml | Log4j Xml file to be passed to internal Circus Train instance to control log level. | string | n/a | yes |
 | docker\_image | Full path of Shunting Yard Docker image. | string | n/a | yes |
 | docker\_registry\_auth\_secret\_name | Docker Registry authentication SecretManager secret name. | string | `""` | no |
 | docker\_version | Shunting Yard Docker image version. | string | n/a | yes |
