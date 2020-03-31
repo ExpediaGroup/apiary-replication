@@ -68,7 +68,7 @@ variable "ct_common_config_yaml" {
 }
 
 variable "ct_log4j_xml" {
-  description = "Log4j XML file to be passed to internal Circus Train instance to control log level."
+  description = "Log4j XML file to be passed to internal Circus Train instance to configure logging."
   type        = "string"
 }
 
