@@ -24,6 +24,10 @@
      {
         "name": "CT_COMMON_CONFIG_YAML",
         "value": "${ct_common_config_yaml}"
+     },
+     {
+        "name": "CT_LOG4J_XML",
+        "value": "${ct_log4j_xml}"
      }
     ]
   }

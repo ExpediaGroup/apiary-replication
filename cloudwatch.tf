@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Expedia, Inc.
+ * Copyright (C) 2020 Expedia, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -98,7 +98,7 @@ data "template_file" "sqs_widgets" {
              "region": "${var.aws_region}",
              "title": "Shunting Yard SQS Age of Oldest Message (s)"
            }
-       }  
+       }
 EOF
 }
 

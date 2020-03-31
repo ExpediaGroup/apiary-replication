@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Expedia, Inc.
+ * Copyright (C) 2020 Expedia, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  */
@@ -67,6 +67,11 @@ variable "ct_common_config_yaml" {
   type        = "string"
 }
 
+variable "ct_log4j_xml" {
+  description = "Log4j XML file to be passed to internal Circus Train instance to configure logging."
+  type        = "string"
+}
+
 variable "allowed_s3_buckets" {
   description = "List of S3 Buckets to which Shunting Yard will have read-write access."
   type        = "list"
@@ -101,7 +106,7 @@ variable "shuntingyard_sqs_queue_stale_messages_timeout" {
 
 variable "selected_tables" {
   description = <<EOF
-Tables selected for Shunting Yard Replication. 
+Tables selected for Shunting Yard Replication.
 Supported Format: [ "database_1.table_1", "database_2.table_2" ]
 Wildcards are not supported, i.e. you need to specify each table explicitly.
 EOF
