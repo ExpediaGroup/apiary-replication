@@ -1,5 +1,5 @@
 ---
-# Copyright (C) 2019 Expedia, Inc.
+# Copyright (C) 2020 Expedia, Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 
 source-catalog:
@@ -14,6 +14,6 @@ event-receiver:
     sqs.queue: ${shuntingyard_sqs_queue}
     sqs.wait.time.seconds: ${shuntingyard_sqs_queue_wait_timeout}
 source-table-filter:
-  table-names: 
+  table-names:
 ${selected_tables}
 ${orphaned_data_strategy}
