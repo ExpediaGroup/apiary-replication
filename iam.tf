@@ -22,6 +22,8 @@ resource "aws_iam_role" "shuntingyard_task_exec" {
   ]
 }
 EOF
+
+  tags = "${var.shuntingyard_tags}"
 }
 
 resource "aws_iam_role_policy_attachment" "task_exec_managed" {
@@ -47,4 +49,6 @@ resource "aws_iam_role" "shuntingyard_task" {
   ]
 }
 EOF
+
+  tags = "${var.shuntingyard_tags}"
 }
