@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [1.3.1] - 2020-07-25
 ### Added
 - SQS queue message filter.
-- Tags support for IAM roles.
+- Added tags to SY IAM role and SQS queue.
 
 ## [1.3.0] - 2020-03-31
 ### Added
