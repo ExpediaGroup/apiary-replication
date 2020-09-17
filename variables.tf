@@ -129,3 +129,9 @@ variable "docker_registry_auth_secret_name" {
   type        = "string"
   default     = ""
 }
+
+variable "exclude_event_list" {
+  description = "To apply metastrore eventType filter in SNS subscription"
+  type    = "list"
+  default = []
+}
