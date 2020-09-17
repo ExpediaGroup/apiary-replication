@@ -131,7 +131,11 @@ variable "docker_registry_auth_secret_name" {
 }
 
 variable "exclude_event_list" {
-  description = "To apply metastrore eventType filter in SNS subscription"
+  description = <<EOF
+Filter on eventtype (optional)
+Supported Format: [ "DROP_PARTITION" ]
+Wildcards are not supported, i.e. you need to specify each eventtype explicitly.
+EOF
   type    = "list"
   default = []
 }
