@@ -118,22 +118,22 @@ ${join("", data.template_file.sqs_widgets.*.rendered)}
 locals {
   alerts = [
     {
-      alarm_name  = "${local.instance_alias}-cpu"
-      namespace   = "AWS/ECS"
+      alarm_name = "${local.instance_alias}-cpu"
+      namespace = "AWS/ECS"
       metric_name = "CPUUtilization"
-      threshold   = "90"
+      threshold = "90"
     },
     {
-      alarm_name  = "${local.instance_alias}-memory"
-      namespace   = "AWS/ECS"
+      alarm_name = "${local.instance_alias}-memory"
+      namespace = "AWS/ECS"
       metric_name = "MemoryUtilization"
-      threshold   = "80"
+      threshold = "80"
     },
     {
-      alarm_name  = "${local.instance_alias}-stale-messages"
-      namespace   = "AWS/SQS"
+      alarm_name = "${local.instance_alias}-stale-messages"
+      namespace = "AWS/SQS"
       metric_name = "ApproximateAgeOfOldestMessage"
-      threshold   = "${var.shuntingyard_sqs_queue_stale_messages_timeout}"
+      threshold = "${var.shuntingyard_sqs_queue_stale_messages_timeout}"
     },
   ]
 
@@ -153,17 +153,17 @@ locals {
 }
 
 resource "aws_cloudwatch_metric_alarm" "shuntingyard_alert" {
-  count               = "${length(local.alerts)}"
-  alarm_name          = "${lookup(local.alerts[count.index], "alarm_name")}"
+  count = "${length(local.alerts)}"
+  alarm_name = "${lookup(local.alerts[count.index], "alarm_name")}"
   comparison_operator = "${lookup(local.alerts[count.index], "comparison_operator", "GreaterThanOrEqualToThreshold")}"
-  metric_name         = "${lookup(local.alerts[count.index], "metric_name")}"
-  namespace           = "${lookup(local.alerts[count.index], "namespace")}"
-  period              = "${lookup(local.alerts[count.index], "period", "120")}"
-  evaluation_periods  = "${lookup(local.alerts[count.index], "evaluation_periods", "2")}"
-  statistic           = "Average"
-  threshold           = "${lookup(local.alerts[count.index], "threshold")}"
+  metric_name = "${lookup(local.alerts[count.index], "metric_name")}"
+  namespace = "${lookup(local.alerts[count.index], "namespace")}"
+  period = "${lookup(local.alerts[count.index], "period", "120")}"
+  evaluation_periods = "${lookup(local.alerts[count.index], "evaluation_periods", "2")}"
+  statistic = "Average"
+  threshold = "${lookup(local.alerts[count.index], "threshold")}"
 
   insufficient_data_actions = []
-  dimensions                = "${local.dimensions[count.index]}"
-  alarm_actions             = ["${aws_sns_topic.shuntingyard_ops_sns.arn}"]
+  dimensions = "${local.dimensions[count.index]}"
+  alarm_actions = ["${aws_sns_topic.shuntingyard_ops_sns.arn}"]
 }

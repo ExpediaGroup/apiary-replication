@@ -37,7 +37,7 @@ The amount of memory (in MiB) used to allocate for the Shunting Yard container.
 Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
 EOF
 
-  type    = "string"
+  type = "string"
   default = "4096"
 }
 
@@ -111,7 +111,7 @@ Supported Format: [ "database_1.table_1", "database_2.table_2" ]
 Wildcards are not supported, i.e. you need to specify each table explicitly.
 EOF
 
-  type    = "list"
+  type = "list"
   default = []
 }
 
@@ -136,6 +136,6 @@ Filter on eventtype (optional)
 Supported Format: [ "DROP_PARTITION" ]
 Wildcards are not supported, i.e. you need to specify each eventtype explicitly.
 EOF
-  type    = "list"
+  type = "list"
   default = []
 }

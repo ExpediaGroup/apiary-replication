@@ -27,7 +27,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "task_exec_managed" {
-  role       = "${aws_iam_role.shuntingyard_task_exec.id}"
+  role = "${aws_iam_role.shuntingyard_task_exec.id}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 

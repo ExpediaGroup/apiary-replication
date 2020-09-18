@@ -5,7 +5,7 @@
  */
 
 locals {
-  instance_alias = "${ var.instance_name == "" ? "shuntingyard" : format("shuntingyard-%s",var.instance_name) }"
+  instance_alias = "${var.instance_name == "" ? "shuntingyard" : format("shuntingyard-%s", var.instance_name)}"
 }
 
 data "aws_vpc" "shuntingyard_vpc" {
