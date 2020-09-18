@@ -29,6 +29,7 @@ For more information please refer to the main [Apiary](https://github.com/Expedi
 | subnets | ECS container subnets. | list | n/a | yes |
 | target\_metastore\_uri | Target Metastore URI for Shunting Yard. | string | n/a | yes |
 | vpc\_id | VPC ID. | string | n/a | yes |
+|exclude\_event\_list | event to exclude from Shunting Yard Replication.  Supported Format: [ "DROP_PARTITION"] Wildcards are not supported, i.e. you need to specify each event explicitly. | list | `<list>` | no |
 
 ## Usage
 

@@ -35,7 +35,9 @@ resource "aws_sqs_queue_policy" "shuntingyard_sqs_queue_policy" {
 POLICY
 }
 
+# default filter
 data "template_file" "sqs_hive_metastore_sns_subscription_filter" {
+  count = "${length(var.exclude_event_list) == 0 ? 1 : 0}"
   template = <<EOF
   {
     "qualifiedTableName": [ $${tables_list} ]
@@ -48,8 +50,40 @@ EOF
 }
 
 resource "aws_sns_topic_subscription" "sqs_hive_metastore_sns_subscription" {
+  count         = "${length(var.exclude_event_list) == 0 ? 1 : 0}"
   topic_arn     = "${var.metastore_events_sns_topic}"
   protocol      = "sqs"
   endpoint      = "${aws_sqs_queue.shuntingyard_sqs_queue.arn}"
-  filter_policy = "${data.template_file.sqs_hive_metastore_sns_subscription_filter.rendered}"
+  filter_policy = "${join("", data.template_file.sqs_hive_metastore_sns_subscription_filter.*.rendered)}"
+}
+
+# filter with metastore event type
+data "template_file" "sqs_hive_metastore_sns_subscription_event_filter" {
+  count    = "${length(var.exclude_event_list) != 0 ? 1 : 0}"
+  template = <<EOF
+  {
+    "qualifiedTableName": [ $${tables_list} ],
+    "eventType": [
+        {
+          "anything-but": [ $${event_list} ]
+        }
+      ]
+  }
+EOF
+
+  vars {
+    tables_list = "${join(",", formatlist("\"%s\"", var.selected_tables))}"
+  }
+  vars {
+    event_list = "${join(",", formatlist("\"%s\"", var.exclude_event_list))}"
+  }
+}
+
+
+resource "aws_sns_topic_subscription" "sqs_hive_metastore_sns_event_filter_subscription" {
+  count = "${length(var.exclude_event_list) != 0 ? 1 : 0}"
+  topic_arn = "${var.metastore_events_sns_topic}"
+  protocol = "sqs"
+  endpoint = "${aws_sqs_queue.shuntingyard_sqs_queue.arn}"
+  filter_policy = "${join("", data.template_file.sqs_hive_metastore_sns_subscription_event_filter.*.rendered)}"
 }
